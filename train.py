@@ -56,6 +56,7 @@ def build_genre_matrix(movies, force_rebuild=False):
             return matrix * idf[np.newaxis, :]
 
         X = idf_weight(genre_matrix)
+        X = X / X.max()
 
         np.save(GENRE_MATRIX_FILE, X)
         np.save(GENRES_FILE, genres)
